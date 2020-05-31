@@ -18,3 +18,8 @@ const Route = use('Route')
 
 Route.post('/users', 'UserController.store').validator(['User'])
 Route.post('/session', 'SessionController.store')
+
+Route.resource('posts', 'PostController')
+  .apiOnly()
+  .middleware(['auth'])
+  .validator(new Map([[['posts.store'], ['Post']]]))
