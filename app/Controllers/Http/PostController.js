@@ -24,8 +24,6 @@ class PostController {
   async show({ params }) {
     const post = await Post.findOrFail(params.id)
 
-    await post.load('users')
-
     return post
   }
 
